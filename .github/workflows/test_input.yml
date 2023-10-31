@@ -36,8 +36,9 @@ jobs:
           env="${{ inputs.ENVIRONMENT }}"
           echo "Service: $service"
           echo "Environment: $env"
-          if [ "$service" == "all" ]; then
-            do echo `ls`
+          if [ "$service" == "all" ] 
+          then
+            echo `ls`
           else
-            do echo $service
+            echo "$service"
           fi
