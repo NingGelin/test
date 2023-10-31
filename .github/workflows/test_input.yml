@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo: 'build temporary env'
+          echo 'build temporary env'
   run-it:
     needs: build-temporary-env
     runs-on: ubuntu-latest
