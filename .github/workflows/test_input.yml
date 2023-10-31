@@ -19,12 +19,13 @@ on:
           - dev
           - stage
 jobs:
-  build-tempory-env:
+  build-temporary-env:
     runs-on: unbuntu-latest
     steps:
       - run: |
           echo: 'build temporary env'
   run-it:
+    needs: build-temporary-env
     runs-on: unbuntu-latest
     steps:
       - name: Checkout
