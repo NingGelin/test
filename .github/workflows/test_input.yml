@@ -1,0 +1,42 @@
+name: Run IT
+run-name: Run IT of ${{ inputs.Service }} service in ${{ inputs.ENVIRONMENT }}
+on:
+  workflow_dispatch:
+    inputs:
+      Service:
+        type: choice
+        description: 'Service'
+        required: true
+        options:
+          - all
+          - tmf620-product-catalog
+          - tmf632-party-management
+      ENVIRONMENT:
+        type: choice
+        description: 'Environment'
+        required: true
+        options:
+          - dev
+          - stage
+jobs:
+  build-tempory-env:
+    runs-on: unbuntu-latest
+    steps:
+      - run: |
+          echo: 'build temporary env'
+  run-it:
+    runs-on: unbuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run IT
+        run: |
+          service = "${{ inputs.Service }}"
+          env = "${{ inputs.ENVIRONMENT }}"
+          echo "Service: $service"
+          echo "Environment: $env"
+          if [ "$service" == "all" ]; then
+            do echo `ls`
+          else
+            do echo $service
+          fi
